@@ -1,6 +1,7 @@
 use clap::{self, Parser};
 
 #[derive(Parser)]
+#[command(author, version, about)]
 struct Opts {
     #[command(subcommand)]
     subcommand: Subcommand,

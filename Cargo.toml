@@ -1,7 +1,9 @@
 [package]
-name = "uiac"
-version = "0.1.0"
-edition = "2021"
+name = 'uiac'
+version = '0.1.0'
+edition = '2021'
+authors = ['Ben Weedon <ben@weedon.email>']
+description = 'A command line interface for UIA on Windows.'
 
 [dependencies]
 clap = {version = '4.0.32', features = ['derive']}
