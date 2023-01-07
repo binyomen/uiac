@@ -1,4 +1,8 @@
-use clap::{self, Parser};
+use {
+    clap::{self, Parser},
+    uiac::{dump, UiacResult},
+    windows::Win32::System::Com::{CoInitializeEx, COINIT_MULTITHREADED},
+};
 
 #[derive(Parser)]
 #[command(author, version, about)]
@@ -13,9 +17,13 @@ enum Subcommand {
     Dump,
 }
 
-fn main() {
+fn main() -> UiacResult<()> {
+    unsafe { CoInitializeEx(None, COINIT_MULTITHREADED) }?;
+
     let opts = Opts::parse();
     match opts.subcommand {
-        Subcommand::Dump => println!("dumping…"),
-    }
+        Subcommand::Dump => dump(),
+    }?;
+
+    Ok(())
 }
