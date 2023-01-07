@@ -132,6 +132,7 @@ impl Variant {
     }
 }
 
+#[derive(Debug, Eq, PartialEq)]
 pub enum ControlType {
     AppBar,
     Button,
@@ -310,6 +311,113 @@ impl fmt::Display for ControlType {
             ControlType::Tree => write!(f, "Tree"),
             ControlType::TreeItem => write!(f, "TreeItem"),
             ControlType::Window => write!(f, "Window"),
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn control_type_new_test() {
+        let mappings = [
+            (UIA_AppBarControlTypeId, ControlType::AppBar),
+            (UIA_ButtonControlTypeId, ControlType::Button),
+            (UIA_CalendarControlTypeId, ControlType::Calendar),
+            (UIA_CheckBoxControlTypeId, ControlType::CheckBox),
+            (UIA_ComboBoxControlTypeId, ControlType::ComboBox),
+            (UIA_CustomControlTypeId, ControlType::Custom),
+            (UIA_DataGridControlTypeId, ControlType::DataGrid),
+            (UIA_DataItemControlTypeId, ControlType::DataItem),
+            (UIA_DocumentControlTypeId, ControlType::Document),
+            (UIA_EditControlTypeId, ControlType::Edit),
+            (UIA_GroupControlTypeId, ControlType::Group),
+            (UIA_HeaderControlTypeId, ControlType::Header),
+            (UIA_HeaderItemControlTypeId, ControlType::HeaderItem),
+            (UIA_HyperlinkControlTypeId, ControlType::Hyperlink),
+            (UIA_ImageControlTypeId, ControlType::Image),
+            (UIA_ListControlTypeId, ControlType::List),
+            (UIA_ListItemControlTypeId, ControlType::ListItem),
+            (UIA_MenuBarControlTypeId, ControlType::MenuBar),
+            (UIA_MenuControlTypeId, ControlType::Menu),
+            (UIA_MenuItemControlTypeId, ControlType::MenuItem),
+            (UIA_PaneControlTypeId, ControlType::Pane),
+            (UIA_ProgressBarControlTypeId, ControlType::ProgressBar),
+            (UIA_RadioButtonControlTypeId, ControlType::RadioButton),
+            (UIA_ScrollBarControlTypeId, ControlType::ScrollBar),
+            (UIA_SemanticZoomControlTypeId, ControlType::SemanticZoom),
+            (UIA_SeparatorControlTypeId, ControlType::Separator),
+            (UIA_SliderControlTypeId, ControlType::Slider),
+            (UIA_SpinnerControlTypeId, ControlType::Spinner),
+            (UIA_SplitButtonControlTypeId, ControlType::SplitButton),
+            (UIA_StatusBarControlTypeId, ControlType::StatusBar),
+            (UIA_TabControlTypeId, ControlType::Tab),
+            (UIA_TabItemControlTypeId, ControlType::TabItem),
+            (UIA_TableControlTypeId, ControlType::Table),
+            (UIA_TextControlTypeId, ControlType::Text),
+            (UIA_ThumbControlTypeId, ControlType::Thumb),
+            (UIA_TitleBarControlTypeId, ControlType::TitleBar),
+            (UIA_ToolBarControlTypeId, ControlType::ToolBar),
+            (UIA_ToolTipControlTypeId, ControlType::ToolTip),
+            (UIA_TreeControlTypeId, ControlType::Tree),
+            (UIA_TreeItemControlTypeId, ControlType::TreeItem),
+            (UIA_WindowControlTypeId, ControlType::Window),
+        ];
+
+        for (from, to) in mappings {
+            assert_eq!(ControlType::new(from), to);
+        }
+    }
+
+    #[test]
+    fn control_type_display_test() {
+        let mappings = [
+            (ControlType::AppBar, "AppBar"),
+            (ControlType::Button, "Button"),
+            (ControlType::Calendar, "Calendar"),
+            (ControlType::CheckBox, "CheckBox"),
+            (ControlType::ComboBox, "ComboBox"),
+            (ControlType::Custom, "Custom"),
+            (ControlType::DataGrid, "DataGrid"),
+            (ControlType::DataItem, "DataItem"),
+            (ControlType::Document, "Document"),
+            (ControlType::Edit, "Edit"),
+            (ControlType::Group, "Group"),
+            (ControlType::Header, "Header"),
+            (ControlType::HeaderItem, "HeaderItem"),
+            (ControlType::Hyperlink, "Hyperlink"),
+            (ControlType::Image, "Image"),
+            (ControlType::List, "List"),
+            (ControlType::ListItem, "ListItem"),
+            (ControlType::MenuBar, "MenuBar"),
+            (ControlType::Menu, "Menu"),
+            (ControlType::MenuItem, "MenuItem"),
+            (ControlType::Pane, "Pane"),
+            (ControlType::ProgressBar, "ProgressBar"),
+            (ControlType::RadioButton, "RadioButton"),
+            (ControlType::ScrollBar, "ScrollBar"),
+            (ControlType::SemanticZoom, "SemanticZoom"),
+            (ControlType::Separator, "Separator"),
+            (ControlType::Slider, "Slider"),
+            (ControlType::Spinner, "Spinner"),
+            (ControlType::SplitButton, "SplitButton"),
+            (ControlType::StatusBar, "StatusBar"),
+            (ControlType::Tab, "Tab"),
+            (ControlType::TabItem, "TabItem"),
+            (ControlType::Table, "Table"),
+            (ControlType::Text, "Text"),
+            (ControlType::Thumb, "Thumb"),
+            (ControlType::TitleBar, "TitleBar"),
+            (ControlType::ToolBar, "ToolBar"),
+            (ControlType::ToolTip, "ToolTip"),
+            (ControlType::Tree, "Tree"),
+            (ControlType::TreeItem, "TreeItem"),
+            (ControlType::Window, "Window"),
+        ];
+
+        for (control_type, string) in mappings {
+            assert_eq!(control_type.to_string(), string);
         }
     }
 }
