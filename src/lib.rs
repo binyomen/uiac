@@ -1,5 +1,8 @@
 use std::{fmt, string::FromUtf16Error};
 
+#[cfg(not(target_os = "windows"))]
+compile_error!("uiac is only supported on Windows.");
+
 mod dump;
 mod wrappers;
 

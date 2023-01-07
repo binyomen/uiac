@@ -4,6 +4,9 @@ use {
     windows::Win32::System::Com::{CoInitializeEx, COINIT_MULTITHREADED},
 };
 
+#[cfg(not(target_os = "windows"))]
+compile_error!("uiac is only supported on Windows.");
+
 #[derive(Parser)]
 #[command(author, version, about)]
 struct Opts {
