@@ -33,11 +33,12 @@ fn print_element(element: &Element, indent_level: usize) -> UiacResult<()> {
         .get_current_property_value(UIA_NamePropertyId)?
         .as_string()?;
     let name = if name.is_empty() { "[no name]" } else { &name };
+
     let control_type = element
         .get_current_property_value(UIA_ControlTypePropertyId)?
         .as_control_type()?;
 
-    println!("{name} -- {control_type}");
+    println!("Name = {name:?}, ControlType = {control_type}");
 
     Ok(())
 }
