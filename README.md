@@ -8,8 +8,8 @@ A command line interface for UIA on Windows.
 
 Dumps the UIA tree of the current desktop.
 
-```powershell
-PS> uiac dump
+```
+> uiac dump
 │ Name = "Desktop 1", ControlType = Pane
   │ Name = "Taskbar", ControlType = Pane
     │ Name = "Start", ControlType = Button
